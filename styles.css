@@ -33,13 +33,24 @@ a {
 footer {
   margin-top: 2rem;
   text-align: center;
-  color: #888;
   font-size: 0.9rem;
+  color: #888;
 }
-footer a {
-  color: #555;
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
+  color: #333;
 }
-footer a:hover {
+
+.github-link:hover {
   text-decoration: underline;
+}
+
+.github-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
