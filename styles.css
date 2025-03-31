@@ -7,7 +7,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #f6f6f6;
+  background: #256e80;
   color: #333;
 }
 
@@ -25,7 +25,7 @@ a {
   margin-top: 1rem;
   text-decoration: none;
   background: #333;
-  color: #fff;
+  color: #1c7372;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
 }
@@ -34,7 +34,7 @@ footer {
   margin-top: 2rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #888;
+  color: #981d98;
 }
 
 .github-link {
@@ -42,7 +42,7 @@ footer {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #333;
+  color: #0e848d;
 }
 
 .github-link:hover {
@@ -52,5 +52,6 @@ footer {
 .github-icon {
   width: 20px;
   height: 20px;
+  fill: #221183; /* Try #555, #666, or even #888 */
   vertical-align: middle;
 }
