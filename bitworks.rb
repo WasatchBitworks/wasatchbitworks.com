@@ -3,7 +3,7 @@ require "sinatra/content_for"
 require 'tilt/erubi'
 require "date"
 
-require_relative "database_persistence"
+#require_relative "database_persistence"
 
 configure do
   enable :sessions
@@ -13,7 +13,7 @@ end
 
 configure(:development) do
   require "sinatra/reloader"
-  also_reload "database_persistence.rb"
+  #also_reload "database_persistence.rb"
 end
 
 helpers do
@@ -23,11 +23,11 @@ helpers do
 end
 
 before do
-  @storage = DatabasePersistence.new(logger)
+  #@storage = DatabasePersistence.new(logger)
 end
 
 after do
-  @storage.disconnect
+  #@storage.disconnect
 end
 
 get "/" do
