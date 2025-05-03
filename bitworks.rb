@@ -41,13 +41,17 @@ get "/home" do
 end
 
 get "/services" do
-  redirect "/home"
+  
+  erb :services, layout: :layout
 end
 
 get "/about" do
-  redirect "/home"
+  
+  erb :about, layout: :layout
 end
 
 get "/contact" do
-  redirect "/home"
+
+
+  erb :contact, layout: :layout
 end
