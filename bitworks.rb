@@ -100,7 +100,7 @@ post '/contact' do
   # Step 4: Try sending the email
   begin
     Pony.mail(
-      to: 'zkane756@icloud.com',                   # Where you receive form submissions
+      to: 'zach@wasatchbitworks.com',                   # Where you receive form submissions
       from: 'no-reply@mail.wasatchbitworks.com',    # Must match your verified Mailgun domain
       reply_to: email,                              # <-- User's email for replying
       subject: "New Contact Form Submission",
@@ -118,8 +118,8 @@ end
 
 get '/test-email' do
   Pony.mail(
-    to: 'zkane756@icloud.com',   # Replace this with your own receiving email
-    from: 'no-reply@mg.wasatchbitworks.com', # Must match Mailgun domain
+    to: 'zach@wasatchbitworks.com',   # Replace this with your own receiving email
+    from: 'no-reply@mail.wasatchbitworks.com', # Must match Mailgun domain
     subject: 'Test Email from Wasatch Bitworks!',
     body: 'This is a successful test email from Pony + Mailgun in production mode!'
   )
