@@ -38,14 +38,6 @@ helpers do
 end
 
 before do
-  if request.scheme == "http"
-    redirect request.url.sub(/^http:/, "https:"), 301
-  end
-
-  # Redirect naked domain to www
-  if request.host == "wasatchbitworks.com"
-    redirect "https://www.wasatchbitworks.com#{request.fullpath}", 301
-  end
   #@storage = DatabasePersistence.new(logger)
 end
 
