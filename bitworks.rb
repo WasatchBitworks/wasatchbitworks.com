@@ -2,8 +2,25 @@ require "sinatra"
 require "sinatra/content_for"
 require 'tilt/erubi'
 require "date"
+require "pony"
+require 'rack/ssl-enforcer'
+
+use Rack::SslEnforcer
 
 #require_relative "database_persistence"
+
+Pony.options = {
+  via: :smtp,
+  via_options: {
+    address: 'smtp.mailgun.org',
+    port: '587',
+    user_name: 'postmaster@mail.wasatchbitworks.com',  # Replace YOUR_DOMAIN
+    password: ENV['MAILGUN_API_KEY'],
+    authentication: :plain,
+    domain: 'mail.wasatchbitworks.com',
+    enable_starttls_auto: true
+  }
+}
 
 configure do
   enable :sessions
@@ -23,6 +40,9 @@ helpers do
 end
 
 before do
+  if request.host == "wasatchbitworks.com"
+    redirect "https://www.wasatchbitworks.com#{request.fullpath}", 301
+  end
   #@storage = DatabasePersistence.new(logger)
 end
 
@@ -54,4 +74,59 @@ get "/contact" do
 
 
   erb :contact, layout: :layout
+end
+
+post '/contact' do
+  # Step 1: Grab form input from params
+  first_name = params[:'first-name']
+  last_name = params[:'last-name']
+  email = params[:email]
+  phone_number = params[:'phone-number']
+  message = params[:message]
+
+  # Step 2: (Optional) Basic form validation
+  if [first_name, last_name, email, message].any? { |field| field.nil? || field.strip.empty? }
+    status 422
+    return "Please fill in all required fields."
+  end
+
+  # Step 3: Compose the email body
+  email_body = <<~BODY
+    New Contact Form Submission:
+
+    Name: #{first_name} #{last_name}
+    Email: #{email}
+    Phone: #{phone_number}
+
+    Message:
+    #{message}
+  BODY
+
+  # Step 4: Try sending the email
+  begin
+    Pony.mail(
+      to: 'zkane756@icloud.com',                   # Where you receive form submissions
+      from: 'no-reply@mail.wasatchbitworks.com',    # Must match your verified Mailgun domain
+      reply_to: email,                              # <-- User's email for replying
+      subject: "New Contact Form Submission",
+      body: email_body
+    )
+    # Step 5: Redirect to Thank You page
+    redirect '/contact'
+  rescue => e
+    # Step 6: Handle errors gracefully
+    puts "Email failed: #{e.message}"
+    status 500
+    "Sorry, there was a problem sending your message."
+  end
+end
+
+get '/test-email' do
+  Pony.mail(
+    to: 'zkane756@icloud.com',   # Replace this with your own receiving email
+    from: 'no-reply@mg.wasatchbitworks.com', # Must match Mailgun domain
+    subject: 'Test Email from Wasatch Bitworks!',
+    body: 'This is a successful test email from Pony + Mailgun in production mode!'
+  )
+  "Test email sent! Check your inbox!"
 end
