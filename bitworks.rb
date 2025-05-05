@@ -3,9 +3,7 @@ require "sinatra/content_for"
 require 'tilt/erubi'
 require "date"
 require "pony"
-require 'rack/ssl-enforcer'
 
-use Rack::SslEnforcer
 
 #require_relative "database_persistence"
 
@@ -40,6 +38,11 @@ helpers do
 end
 
 before do
+  if request.scheme == "http"
+    redirect request.url.sub(/^http:/, "https:"), 301
+  end
+
+  # Redirect naked domain to www
   if request.host == "wasatchbitworks.com"
     redirect "https://www.wasatchbitworks.com#{request.fullpath}", 301
   end
