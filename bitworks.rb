@@ -12,11 +12,11 @@ Pony.options = {
   via_options: {
     address: 'smtp.mailgun.org',
     port: '587',
-    user_name: 'postmaster@mail.wasatchbitworks.com',  # Replace YOUR_DOMAIN
-    password: ENV['MAILGUN_API_KEY'],
+    enable_starttls_auto: true,
+    user_name: 'postmaster@mail.wasatchbitworks.com',
+    password: ENV['MAILGUN_SMTP_PASSWORD'],  # <<< fixed here
     authentication: :plain,
-    domain: 'mail.wasatchbitworks.com',
-    enable_starttls_auto: true
+    domain: 'wasatchbitworks.com'             # <<< and here
   }
 }
 
