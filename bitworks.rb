@@ -106,7 +106,15 @@ post '/contact' do
       subject: "New Contact Form Submission",
       body: email_body
     )
+
+    Pony.mail(
+      to: email,  # user's email
+      from: 'no-reply@wasatchbitworks.com',
+      subject: "Thanks for reaching out!",
+      body: "Hi #{params[:'first-name']},\n\nThanks for contacting Wasatch Bitworks! We'll get back to you shortly.\n\n- Zach"
+    )
     # Step 5: Redirect to Thank You page
+    session[:success] = "Thanks for getting in touch, we will contact you soon!"
     redirect '/contact'
   rescue => e
     # Step 6: Handle errors gracefully

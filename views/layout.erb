@@ -31,6 +31,18 @@
       </nav>
     </header>
 
+    <% if session[:error] %>
+      <div class="mb-4 rounded-lg bg-red-100 border border-red-400 text-red-700 px-4 py-3">
+        <p><%= session.delete(:error) %></p>
+      </div>
+    <% end %>
+
+    <% if session[:success] %>
+      <div class="mb-4 rounded-lg bg-green-100 border border-green-400 text-green-700 px-4 py-3">
+        <p><%= session.delete(:success) %></p>
+      </div>
+    <% end %>
+
     <!-- Main Content (page-specific content gets inserted here) -->
     <main class="flex-grow flex flex-col">
       <%== yield %>
