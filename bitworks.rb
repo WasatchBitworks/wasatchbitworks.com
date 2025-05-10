@@ -14,7 +14,7 @@ Pony.options = {
     port: '587',
     enable_starttls_auto: true,
     user_name: 'postmaster@mail.wasatchbitworks.com',
-    password: ENV['MAILGUN_SMTP_PASSWORD'],  # <<< fixed here
+    password: ENV['MAILGUN_SMTP_PASSWORD'], # <<< fixed here
     authentication: :plain,
     domain: 'wasatchbitworks.com'             # <<< and here
   }
@@ -100,7 +100,7 @@ post '/contact' do
   # Step 4: Try sending the email
   begin
     Pony.mail(
-      to: 'zach@wasatchbitworks.com',                   # Where you receive form submissions
+      to: 'zach@wasatchbitworks.com',
       from: 'no-reply@mail.wasatchbitworks.com',    # Must match your verified Mailgun domain
       reply_to: email,                              # <-- User's email for replying
       subject: "New Contact Form Submission",
@@ -108,19 +108,20 @@ post '/contact' do
     )
 
     Pony.mail(
-      to: email,  # user's email
+      to: email,
       from: 'no-reply@wasatchbitworks.com',
       subject: "Thanks for reaching out!",
-      body: "Hi #{params[:'first-name']},\n\nThanks for contacting Wasatch Bitworks! We'll get back to you shortly.\n\n- Zach"
+      body: "Hi #{params[:'first-name']},\n\nThanks for contacting Wasatch Bitworks!
+        We'll get back to you shortly.\n\n- Zach"
     )
-    # Step 5: Redirect to Thank You page
+
     session[:success] = "Thanks for getting in touch, we will contact you soon!"
     redirect '/contact'
   rescue => e
-    # Step 6: Handle errors gracefully
     puts "Email failed: #{e.message}"
-    status 500
-    "Sorry, there was a problem sending your message."
+    session[:error] = "Sorry, there was a problem sending your message. Please try again or email
+     me at zach@wasatchbitworks.com"
+    redirect "/contact"
   end
 end
 

@@ -19,8 +19,19 @@
           </div>
         </div>
         <h2 class="text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">Get in touch</h2>
-        <p class="mt-6 text-lg/8 text-gray-300">Send me a message, let's make great things happen!</p>
+        <p class="mt-6 text-lg/8 text-gray-300">Have a project in mind or just have questions. Send a message and I’ll get back to you soon.</p>
         <dl class="mt-10 space-y-4 text-base/7 text-gray-300">
+
+          <div class="flex gap-x-4">
+            <dt class="flex-none">
+            <span class="sr-only">Name</span>
+            <svg class="h-7 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.5 20.25a8.25 8.25 0 0 1 15 0" />
+            </svg>
+            </dt>
+            <dd>Zach Kane</dd>
+          </div>
+          
           <div class="flex gap-x-4">
             <dt class="flex-none">
               <span class="sr-only">Address</span>
@@ -55,25 +66,25 @@
           <div>
             <label for="last-name" class="block text-sm/6 font-semibold text-white">Last name</label>
             <div class="mt-2.5">
-              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
+              <input type="text" name="last-name" id="last-name" autocomplete="off" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
             </div>
           </div>
           <div class="sm:col-span-2">
             <label for="email" class="block text-sm/6 font-semibold text-white">Email</label>
             <div class="mt-2.5">
-              <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
+              <input type="email" name="email" id="email" autocomplete="off" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
             </div>
           </div>
           <div class="sm:col-span-2">
             <label for="phone-number" class="block text-sm/6 font-semibold text-white">Phone number</label>
             <div class="mt-2.5">
-              <input type="tel" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
+              <input type="tel" name="phone-number" id="phone-number" autocomplete="off" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500">
             </div>
           </div>
           <div class="sm:col-span-2">
             <label for="message" class="block text-sm/6 font-semibold text-white">Message</label>
             <div class="mt-2.5">
-              <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"></textarea>
+              <textarea name="message" id="message" required rows="4" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"></textarea>
             </div>
           </div>
         </div>
