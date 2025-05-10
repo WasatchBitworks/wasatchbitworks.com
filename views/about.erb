@@ -1,62 +1,49 @@
 <div class="bg-white">
-  <!-- Header -->
-  <header class="absolute inset-x-0 top-0 z-50">
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <div class="lg:hidden" role="dialog" aria-modal="true">
-      <!-- Background backdrop, show/hide based on slide-over state. -->
-    </div>
-  </header>
+  <main class="isolate pb-32">
 
-  <main class="isolate">
-    <!-- Hero section -->
+    <!-- Hero Section -->
     <div class="relative isolate -z-10">
       <svg class="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)] stroke-gray-200" aria-hidden="true">
         <defs>
-          <pattern id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+          <pattern id="hero-pattern" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
             <path d="M.5 200V.5H200" fill="none" />
           </pattern>
         </defs>
         <svg x="50%" y="-1" class="overflow-visible fill-gray-50">
           <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z" stroke-width="0" />
         </svg>
-        <rect width="100%" height="100%" stroke-width="0" fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)" />
+        <rect width="100%" height="100%" stroke-width="0" fill="url(#hero-pattern)" />
       </svg>
+
       <div class="absolute top-0 right-0 left-1/2 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48" aria-hidden="true">
-        <div class="aspect-801/1036 w-[50.0625rem] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)"></div>
+        <div class="aspect-801/1036 w-[50.0625rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)"></div>
       </div>
+
       <div class="overflow-hidden">
         <div class="mx-auto max-w-7xl px-6 pt-36 pb-32 sm:pt-60 lg:px-8 lg:pt-32">
           <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div class="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
               <h1 class="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">Wasatch Bitworks</h1>
-              <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">Founded and run by Zach Kane, a web developer based in Utah. After years of studying backend devleopment, front end design and development, and business tech, I launched Bitworks to help businesses create strong, beautiful, and effective websites.</p>
+              <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                I’m Zach, a web developer based in Sandy, Utah, and the founder of Wasatch Bitworks. After spending years learning backend development and front-end design I started Bitworks to help businesses build websites that are clean, effective, and built to last.
+              </p>
             </div>
+
+            <!-- Hero Images -->
             <div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+              <!-- Column 1 -->
               <div class="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
-                <div class="relative">
-                  <img src="/images/IMG_8907.jpeg" alt="" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-                  <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset"></div>
-                </div>
+                <img src="/images/IMG_8907.jpeg" alt="Zach hiking" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
               </div>
+              <!-- Column 2 -->
               <div class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
-                <div class="relative">
-                  <img src="/images/P1040730.JPG" alt="" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-                  <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset"></div>
-                </div>
-                <div class="relative">
-                  <img src="/images/P1040438.JPG" alt="" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-                  <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset"></div>
-                </div>
+                <img src="/images/P1040730.JPG" alt="Mountain view" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
+                <img src="/images/P1040438.JPG" alt="Trail scene" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
               </div>
+              <!-- Column 3 -->
               <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
-                <div class="relative">
-                  <img src="/images/P1040783.JPG" alt="" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-                  <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset"></div>
-                </div>
-                <div class="relative">
-                  <img src="/images/P1030084.JPG" alt="" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-                  <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset"></div>
-                </div>
+                <img src="/images/P1040783.JPG" alt="Lake reflection" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
+                <img src="/images/P1030084.JPG" alt="Climbing route" class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
               </div>
             </div>
           </div>
@@ -64,8 +51,98 @@
       </div>
     </div>
 
+    <!-- Technologies Section -->
+    <div class="relative isolate -z-10 mt-32 sm:mt-48">
+      <div class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
+        <svg class="h-[40rem] w-[80rem] flex-none stroke-gray-200" aria-hidden="true">
+          <defs>
+            <pattern id="tech-pattern" width="200" height="200" x="50%" y="50%" patternUnits="userSpaceOnUse" patternTransform="translate(-100 0)">
+              <path d="M.5 200V.5H200" fill="none" />
+            </pattern>
+          </defs>
+          <svg x="50%" y="50%" class="overflow-visible fill-gray-50">
+            <path d="M-300 0h201v201h-201Z M300 200h201v201h-201Z" stroke-width="0" />
+          </svg>
+          <rect width="100%" height="100%" stroke-width="0" fill="url(#tech-pattern)" />
+        </svg>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-center text-lg font-semibold text-gray-900">Technologies I Build With</h2>
+        <div class="mx-auto mt-10 grid grid-cols-3 gap-x-8 gap-y-10 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
+          <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" alt="Ruby">
+          <img class="max-h-12 w-full object-contain" src="/images/sinatra_logo.png" alt="Sinatra">
+          <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" alt="PostgreSQL">
+          <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS">
+          <img class="max-h-12 w-full object-contain" src="/images/Heroku-Logo-Mark-Light-RGB.png" alt="Heroku">
+          <img class="max-h-12 w-full object-contain" src="/images/cf-logo-v-rgb.png" alt="Cloudflare">
+          <img class="max-h-12 w-full object-contain" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+        </div>
+        <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+          I build full-stack web applications using Ruby and Sinatra for elegant backend logic, PostgreSQL for reliable database management, and Tailwind CSS for fast, responsive styling. I use Heroku to deploy and manage applications quickly and reliably, and Cloudflare to make websites faster, safer, and more resilient. My projects are open-source and available on <a href="https://github.com/WasatchBitworks" class="text-blue-600 hover:underline">GitHub</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">The team</h2>
+        <p class="mt-6 text-lg/8 text-gray-600">
+          Wasatch Bitworks is a one-person studio — just me, Zach. I take on projects that align with my skills and values, and I keep things intentionally small so I can do focused, high-quality work.
+        </p>
+      </div>
+      <ul class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-center sm:grid-cols-2 md:grid-cols-3 lg:mx-0 lg:max-w-none">
+        <li>
+          <img class="mx-auto size-24 rounded-full" src="/images/DSC06289.jpg" alt="Zachary Kane">
+          <h3 class="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">Zachary Kane</h3>
+          <p class="text-sm/6 text-gray-600">Founder / Developer</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Image Section -->
+    <%# <div class="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
+      <img src="/images/P1050225.JPG" alt="Nature image" class="aspect-5/2 w-full object-cover xl:rounded-3xl">
+    </div> %>
+
+    <!-- Values Section -->
+    <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">What I care about</h2>
+        <p class="mt-6 text-lg/8 text-gray-600">
+          With Wasatch Bitworks, I aim to build things that are thoughtful and dependable. These are the principles that guide how I work, what I build, and how I treat the people I work with.
+        </p>
+      </div>
+      <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div>
+          <dt class="font-semibold text-gray-900">Aim for quality</dt>
+          <dd class="mt-1 text-gray-600">Good work should last. I focus on clean code, clear design, and solutions that do their job well.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-900">Keep learning</dt>
+          <dd class="mt-1 text-gray-600">Tech changes fast. I stay curious, keep my skills sharp, and learn from every project I take on.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-900">Communicate clearly</dt>
+          <dd class="mt-1 text-gray-600">Whether it’s explaining a feature or talking through feedback, clear and respectful communication is a must.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-900">Take responsibility</dt>
+          <dd class="mt-1 text-gray-600">I stand behind my work. If something’s off, I fix it. If it needs extra care, I give it.</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-900">Protect time and focus</dt>
+          <dd class="mt-1 text-gray-600">Good work takes attention. I build in space for focus, thinking time, and breaks when needed.</dd>
+        </div>
+      </dl>
+    </div>
+
+  </main>
+</div>
+
     <!-- Content section -->
-    <div class="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
+    <%# <div class="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
       <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
         <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">Our mission</h2>
         <div class="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
@@ -87,121 +164,4 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Image section -->
-    <div class="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
-      <img src="/images/P1050225.JPG" alt="" class="aspect-5/2 w-full object-cover xl:rounded-3xl">
-    </div>
-
-    <!-- Values section -->
-    <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">Our values</h2>
-        <p class="mt-6 text-lg/8 text-gray-600">At Wasatch Bitworks, our values guide everything we do — from how we work internally to how we serve our clients. We believe in building with integrity, sharing our knowledge openly, and growing every day.</p>
-      </div>
-      <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <div>
-          <dt class="font-semibold text-gray-900">Be world-class</dt>
-          <dd class="mt-1 text-gray-600">We set high standards for ourselves and our work. Excellence isn’t an accident — it’s the result of dedication, skill, and attention to detail. We strive to deliver results that stand out and make a lasting impact.</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-gray-900">Share everything you know</dt>
-          <dd class="mt-1 text-gray-600">Knowledge grows when it’s shared. We believe in transparency, mentorship, and lifting others up by openly sharing what we learn. Teaching strengthens our own understanding and creates a stronger community.</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-gray-900">Always learning</dt>
-          <dd class="mt-1 text-gray-600">The best teams never stay still. We embrace curiosity, seek feedback, and invest time in sharpening our skills. Whether it’s mastering new technologies or learning from each project, we know growth is a continuous journey.</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-gray-900">Be supportive</dt>
-          <dd class="mt-1 text-gray-600">We thrive by helping others thrive. Collaboration, patience, and encouragement aren’t afterthoughts — they’re how we build trust and lasting partnerships. We celebrate each other’s wins and lift each other during challenges.</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-gray-900">Take responsibility</dt>
-          <dd class="mt-1 text-gray-600">We own our actions, our work, and our outcomes. We don’t pass blame or shy away from hard conversations. Taking responsibility builds credibility and shows respect for our clients, our teammates, and ourselves.
-</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-gray-900">Enjoy downtime</dt>
-          <dd class="mt-1 text-gray-600">Sustainable success requires balance. We prioritize rest, personal time, and stepping away when needed so that when we show up, we show up fully. Great work comes from minds and bodies that are cared for.</dd>
-        </div>
-      </dl>
-    </div>
-
-    <!-- Logo cloud -->
-    <!-- Technologies I Use -->
-<div class="relative isolate -z-10 mt-32 sm:mt-48">
-  <div class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
-    <svg class="h-[40rem] w-[80rem] flex-none stroke-gray-200" aria-hidden="true">
-      <defs>
-        <pattern id="tech-pattern" width="200" height="200" x="50%" y="50%" patternUnits="userSpaceOnUse" patternTransform="translate(-100 0)">
-          <path d="M.5 200V.5H200" fill="none" />
-        </pattern>
-      </defs>
-      <svg x="50%" y="50%" class="overflow-visible fill-gray-50">
-        <path d="M-300 0h201v201h-201Z M300 200h201v201h-201Z" stroke-width="0" />
-      </svg>
-      <rect width="100%" height="100%" stroke-width="0" fill="url(#tech-pattern)" />
-    </svg>
-  </div>
-
-  <!-- Technologies I Use -->
-  <div class="relative isolate -z-10 mt-32 sm:mt-48">
-    <div class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
-      <svg class="h-[40rem] w-[80rem] flex-none stroke-gray-200" aria-hidden="true">
-        <defs>
-          <pattern id="tech-pattern" width="200" height="200" x="50%" y="50%" patternUnits="userSpaceOnUse" patternTransform="translate(-100 0)">
-            <path d="M.5 200V.5H200" fill="none" />
-          </pattern>
-        </defs>
-        <svg x="50%" y="50%" class="overflow-visible fill-gray-50">
-          <path d="M-300 0h201v201h-201Z M300 200h201v201h-201Z" stroke-width="0" />
-        </svg>
-        <rect width="100%" height="100%" stroke-width="0" fill="url(#tech-pattern)" />
-      </svg>
-    </div>
-
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <h2 class="text-center text-lg font-semibold text-gray-900">Technologies I Build With</h2>
-
-      <div class="mx-auto mt-10 grid grid-cols-3 gap-x-8 gap-y-10 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
-
-        <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" alt="Ruby" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="/images/sinatra_logo.png" alt="Sinatra" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" alt="PostgreSQL" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="TailwindCSS" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="/images/Heroku-Logo-Mark-Light-RGB.png" alt="Heroku" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="/images/cf-logo-v-rgb.png" alt="Cloudflare" width="158" height="48">
-        <img class="max-h-12 w-full object-contain" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="158" height="48">
-
-      </div>
-
-      <p class="mt-10 text-center text-base text-gray-600 max-w-2xl mx-auto">
-        I build full-stack web applications using Ruby and Sinatra for elegant backend logic. PostgreSQL for reliable database management, and Tailwind CSS for fast, responsive styling. I use Heroku to deploy and manage applications quickly and reliably, and Cloudflare to make websites faster, safer, and more resilient.
-        My projects are open-source and available on <a href="https://github.com/WasatchBitworks" class="text-blue-600 hover:underline">GitHub</a>.
-      </p>
-    </div>
-  </div>
-
-  <!-- Team section -->
-  <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">The team</h2>
-      <p class="mt-6 text-lg/8 text-gray-600">It's just me for now, taking on projects I want to take on and leaving plenty of time to play outdoors.</p>
-    </div>
-
-    <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6">
-      <li>
-        <img class="mx-auto size-24 rounded-full" src="/images/DSC06289.jpg" alt="">
-        <h3 class="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">Zachary Kane</h3>
-        <p class="text-sm/6 text-gray-600">Founder</p>
-      </li>
-    </ul>
-  </div>
-
-        <!-- More people... -->
-      </ul>
-    </div>
-  </main>
-</div>
+    </div> %>
