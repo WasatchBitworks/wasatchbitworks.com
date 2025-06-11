@@ -72,12 +72,13 @@ get "/contact" do
 end
 
 post '/contact' do
+  halt 400 if params[:nickname] && !params[:nickname].empty?
   # Step 1: Grab form input from params
-  first_name = params[:'first-name']
-  last_name = params[:'last-name']
-  email = params[:email]
-  phone_number = params[:'phone-number']
-  message = params[:message]
+  first_name = params[:'first-name'].to_s.strip
+  last_name = params[:'last-name'].to_s.strip
+  email = params[:email].to_s.strip
+  phone_number = params[:'phone-number'].to_s.strip
+  message = params[:message].to_s.strip
 
   # Step 2: (Optional) Basic form validation
   if [first_name, last_name, email, message].any? { |field| field.nil? || field.strip.empty? }
