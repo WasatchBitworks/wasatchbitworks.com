@@ -72,7 +72,10 @@ get "/contact" do
 end
 
 post '/contact' do
+  # honeypot check for bots
+  # If the nickname field is filled, it's likely a bot
   halt 400 if params[:nickname] && !params[:nickname].empty?
+  
   # Step 1: Grab form input from params
   first_name = params[:'first-name'].to_s.strip
   last_name = params[:'last-name'].to_s.strip
