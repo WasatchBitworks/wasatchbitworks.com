@@ -7,7 +7,7 @@ require "securerandom"
 require "rack/protection"
 
 # Load .env in development
-require 'dotenv/load' if ENV['RACK_ENV'] != 'production'
+require 'dotenv/load' if ENV['RACK_ENV'] == 'development' || (!ENV['RACK_ENV'] && !ENV['DYNO'])
 
 #require_relative "database_persistence"
 
