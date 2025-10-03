@@ -5,6 +5,7 @@ GEM
     byebug (12.0.0)
     coderay (1.1.3)
     date (3.4.1)
+    dotenv (3.1.8)
     erubi (1.13.1)
     logger (1.7.0)
     mail (2.8.1)
@@ -71,6 +72,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  dotenv
   erubi
   pg
   pony

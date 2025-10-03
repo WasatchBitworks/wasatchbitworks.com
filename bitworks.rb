@@ -6,6 +6,8 @@ require "pony"
 require "securerandom"
 require "rack/protection"
 
+# Load .env in development
+require 'dotenv/load' if ENV['RACK_ENV'] != 'production'
 
 #require_relative "database_persistence"
 
@@ -69,8 +71,8 @@ before do
   headers['Content-Security-Policy'] = [
     "default-src 'self'",
     "img-src 'self' data: https://upload.wikimedia.org https://github.githubassets.com",
-    "style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com",
-    "script-src 'self' https://cdn.tailwindcss.com https://analytics.wasatchbitworks.com",
+    "style-src 'self' 'unsafe-inline'",
+    "script-src 'self' https://analytics.wasatchbitworks.com",
     "connect-src 'self' https://analytics.wasatchbitworks.com",
     "form-action 'self'",
     "base-uri 'self'",
