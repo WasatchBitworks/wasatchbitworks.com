@@ -3,6 +3,8 @@ require "sinatra/content_for"
 require 'tilt/erubi'
 require "date"
 require "pony"
+require "securerandom"
+require "rack/protection"
 
 
 #require_relative "database_persistence"
@@ -10,20 +12,24 @@ require "pony"
 Pony.options = {
   via: :smtp,
   via_options: {
-    address: 'smtp.mailgun.org',
-    port: '587',
+    address: ENV.fetch('MAILGUN_SMTP_SERVER', 'smtp.mailgun.org'),
+    port: ENV.fetch('MAILGUN_SMTP_PORT', '587'),
     enable_starttls_auto: true,
-    user_name: 'postmaster@mail.wasatchbitworks.com',
-    password: ENV['MAILGUN_SMTP_PASSWORD'], # <<< fixed here
+    user_name: ENV.fetch('MAILGUN_SMTP_LOGIN', 'postmaster@mail.wasatchbitworks.com'),
+    password: ENV.fetch('MAILGUN_SMTP_PASSWORD'),
     authentication: :plain,
-    domain: 'wasatchbitworks.com'             # <<< and here
+    domain: ENV.fetch('MAILGUN_DOMAIN', 'mail.wasatchbitworks.com')
   }
 }
 
 configure do
-  enable :sessions
-  set :session_secret, SecureRandom.hex(32)
+  set :sessions, key: 'wb.session',
+                 httponly: true,
+                 same_site: :lax,
+                 secure: settings.environment == :production
+  set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(32) }
   set :erb, escape_html: true
+  set :protection, true
 end
 
 configure(:development) do
@@ -31,14 +37,51 @@ configure(:development) do
   #also_reload "database_persistence.rb"
 end
 
+use Rack::Protection
+
 helpers do
-  def help
-    puts "help"
+  def production?
+    settings.environment == :production
+  end
+
+  def valid_email?(value)
+    /
+      \A
+      [A-Z0-9._%+-]+    # local
+      @
+      [A-Z0-9.-]+       # domain
+      \.[A-Z]{2,}       # tld
+      \z
+    /ix.match?(value.to_s)
   end
 end
 
 before do
-  #@storage = DatabasePersistence.new(logger)
+  # Force HTTPS in production (trusting X-Forwarded-Proto from proxy/CDN)
+  if production?
+    scheme = request.env['HTTP_X_FORWARDED_PROTO'] || request.scheme
+    if scheme == 'http'
+      redirect to("https://#{request.host}#{request.fullpath}"), 301
+    end
+  end
+
+  # Basic CSP
+  headers['Content-Security-Policy'] = [
+    "default-src 'self'",
+    "img-src 'self' data: https://upload.wikimedia.org https://github.githubassets.com",
+    "style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com",
+    "script-src 'self' https://cdn.tailwindcss.com https://analytics.wasatchbitworks.com",
+    "connect-src 'self' https://analytics.wasatchbitworks.com",
+    "form-action 'self'",
+    "base-uri 'self'",
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    "upgrade-insecure-requests"
+  ].join('; ')
+
+  # Flash messages
+  @flash_success = session.delete(:success)
+  @flash_error   = session.delete(:error)
 end
 
 after do
@@ -80,6 +123,10 @@ post '/contact' do
   first_name = params[:'first-name'].to_s.strip
   last_name = params[:'last-name'].to_s.strip
   email = params[:email].to_s.strip
+  unless valid_email?(email)
+    status 422
+    return "Please enter a valid email address."
+  end
   phone_number = params[:'phone-number'].to_s.strip
   message = params[:message].to_s.strip
 
@@ -87,6 +134,12 @@ post '/contact' do
   if [first_name, last_name, email, message].any? { |field| field.nil? || field.strip.empty? }
     status 422
     return "Please fill in all required fields."
+  end
+
+  session[:last_contact_submit] ||= 0
+  if Time.now.to_i - session[:last_contact_submit] < 20
+    status 429
+    return "Please wait a few seconds before trying again."
   end
 
   # Step 3: Compose the email body
@@ -113,12 +166,13 @@ post '/contact' do
 
     Pony.mail(
       to: email,
-      from: 'no-reply@wasatchbitworks.com',
+      from: 'no-reply@mail.wasatchbitworks.com',
       subject: "Thanks for reaching out!",
       body: "Hi #{params[:'first-name']},\n\nThanks for contacting Wasatch Bitworks!
         We'll get back to you shortly.\n\n- Zach"
     )
 
+    session[:last_contact_submit] = Time.now.to_i
     session[:success] = "Thanks for getting in touch, we will contact you soon!"
     redirect '/contact'
   rescue => e
