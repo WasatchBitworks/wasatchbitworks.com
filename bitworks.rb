@@ -9,8 +9,6 @@ require "rack/protection"
 # Load .env in development
 require 'dotenv/load' if ENV['RACK_ENV'] == 'development' || (!ENV['RACK_ENV'] && !ENV['DYNO'])
 
-#require_relative "database_persistence"
-
 Pony.options = {
   via: :smtp,
   via_options: {
@@ -18,7 +16,7 @@ Pony.options = {
     port: ENV.fetch('MAILGUN_SMTP_PORT', '587'),
     enable_starttls_auto: true,
     user_name: ENV.fetch('MAILGUN_SMTP_LOGIN', 'postmaster@mail.wasatchbitworks.com'),
-    password: ENV.fetch('MAILGUN_SMTP_PASSWORD'),
+    password: ENV.fetch('MAILGUN_SMTP_PASSWORD', 'dev-placeholder-password'),
     authentication: :plain,
     domain: ENV.fetch('MAILGUN_DOMAIN', 'mail.wasatchbitworks.com')
   }
@@ -36,7 +34,6 @@ end
 
 configure(:development) do
   require "sinatra/reloader"
-  #also_reload "database_persistence.rb"
 end
 
 use Rack::Protection
@@ -68,7 +65,7 @@ before do
   end
 
   # Basic CSP
-  headers['Content-Security-Policy'] = [
+  csp_directives = [
     "default-src 'self'",
     "img-src 'self' data: https://upload.wikimedia.org https://github.githubassets.com",
     "style-src 'self' 'unsafe-inline'",
@@ -77,17 +74,15 @@ before do
     "form-action 'self'",
     "base-uri 'self'",
     "frame-ancestors 'none'",
-    "object-src 'none'",
-    "upgrade-insecure-requests"
-  ].join('; ')
+    "object-src 'none'"
+  ]
+  # Only upgrade to HTTPS in production
+  csp_directives << "upgrade-insecure-requests" if production?
+  headers['Content-Security-Policy'] = csp_directives.join('; ')
 
   # Flash messages
   @flash_success = session.delete(:success)
   @flash_error   = session.delete(:error)
-end
-
-after do
-  #@storage.disconnect
 end
 
 get "/" do
